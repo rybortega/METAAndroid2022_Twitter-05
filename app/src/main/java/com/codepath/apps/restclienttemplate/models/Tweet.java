@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.RecursiveTask;
 
-//@Parcel
+@Parcel
 public class Tweet {
     public String body;
     public String createdAt;
     public User user;
 
+
+    public Tweet(){}
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");
