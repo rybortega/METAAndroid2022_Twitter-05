@@ -34,6 +34,7 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
+        client = TwitterApp.getRestClient(this);
 
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,7 @@ public class ComposeActivity extends AppCompatActivity {
                             finish();
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Log.e(TAG, "onFailure to tweet", e);
                         }
                     }
 

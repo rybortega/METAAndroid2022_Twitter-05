@@ -37,4 +37,13 @@
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="TextView"
         tools:text="This is my tweet" />
+
+    <ImageView
+        android:id="@+id/ivPicture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>

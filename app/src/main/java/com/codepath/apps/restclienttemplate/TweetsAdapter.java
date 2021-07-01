@@ -17,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+//import java.awt.Window;
+
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
 
     Context context;
@@ -26,6 +28,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         this.context = context;
         this.tweets = tweets;
     }
+
+
 
     @NonNull
     @NotNull
@@ -51,6 +55,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView ivProfileImage;
+        ImageView ivPicture;
         TextView tvScreenName;
         TextView tvBody;
 
@@ -59,6 +64,8 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvBody = itemView.findViewById(R.id.tvBody);
+            ivPicture = itemView.findViewById(R.id.ivPicture);
+
 
         }
 
@@ -66,7 +73,30 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileimageUrl).into(ivProfileImage);
+            if (tweet.imgUrl != "") {
+                // Set visibility for ImageView to Visible
+                ivPicture.setVisibility(View.VISIBLE);
+                // Load imgUrl using glide into ImageView
+                 Glide.with(context).load(tweet.imgUrl).into(ivPicture);
 
+            } else {
+                // Set visibility for ImageView to GONE
+                ivPicture.setVisibility(View.GONE);
+
+            }
         }
     }
+
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+
+    // Add a list of items -- change to type used
+    public void addAll(List<Tweet> list) {
+        tweets.addAll(list);
+        notifyDataSetChanged();
+    }
+
+
 }
