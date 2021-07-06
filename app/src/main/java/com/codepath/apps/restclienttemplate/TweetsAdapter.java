@@ -17,7 +17,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-//import java.awt.Window;
 
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder> {
 
@@ -28,7 +27,6 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         this.context = context;
         this.tweets = tweets;
     }
-
 
 
     @NonNull
@@ -57,7 +55,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivProfileImage;
         ImageView ivPicture;
         TextView tvScreenName;
-        TextView tvBody;
+        TextView tvBody, tvTime;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
@@ -65,6 +63,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
             tvBody = itemView.findViewById(R.id.tvBody);
             ivPicture = itemView.findViewById(R.id.ivPicture);
+            tvTime = itemView.findViewById(R.id.tvTime);
 
 
         }
@@ -72,12 +71,13 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
+            tvTime.setText(tweet.time);
             Glide.with(context).load(tweet.user.profileimageUrl).into(ivProfileImage);
             if (tweet.imgUrl != "") {
                 // Set visibility for ImageView to Visible
                 ivPicture.setVisibility(View.VISIBLE);
                 // Load imgUrl using glide into ImageView
-                 Glide.with(context).load(tweet.imgUrl).into(ivPicture);
+                Glide.with(context).load(tweet.imgUrl).into(ivPicture);
 
             } else {
                 // Set visibility for ImageView to GONE

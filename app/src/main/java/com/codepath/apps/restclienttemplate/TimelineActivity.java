@@ -96,19 +96,6 @@ public class TimelineActivity extends AppCompatActivity {
             public void onFailure(int statusCode, Headers headers, String response, Throwable throwable) {
                 Log.e(TAG, "onFailure!" + response, throwable);
             }
-
-            public void onSuccess(JSONArray json) {
-                // Remember to CLEAR OUT old items before appending in the new ones
-                adapter.clear();
-                // ...the data has come back, add new items to your adapter...
-                adapter.addAll(tweets);
-                // Now we call setRefreshing(false) to signal refresh has finished
-                swipeContainer.setRefreshing(false);
-            }
-
-            public void onFailure(Throwable e) {
-                Log.d("DEBUG", "Fetch timeline error: " + e.toString());
-            }
         });
     }
     // all tweets have an entities key
