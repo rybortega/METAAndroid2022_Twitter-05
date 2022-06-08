@@ -46,7 +46,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/VanessaAgbugba/SimpleTweet/blob/master/TwitterWalkthrough.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[Video Walkthrough]()
 
 GIF created with [Kap](https://getkap.co/).
 
